@@ -45,9 +45,8 @@ namespace perfetto {
 // Whether the operating system supports memfd.
 bool HasMemfdSupport();
 
-// Call memfd(2) if available on platform and return the fd as result. This call
-// also makes a kernel version check for safety on older kernels (b/116769556).
-// Returns an invalid ScopedFile on failure.
+// Call memfd(2) if HasMemfdSupport() and return the fd as result. Returns an
+// invalid ScopedFile on failure.
 base::ScopedFile CreateMemfd(const char* name, unsigned int flags);
 
 }  // namespace perfetto
